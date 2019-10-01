@@ -70,7 +70,9 @@ version = "0.6.0"
 
 [dependencies.termion]
 optional = true
-version = "1.5.3"
+#version = "1.5.3"
+git = "https://gitlab.redox-os.org/Jezza/termion"
+branch = "windows-support"
 
 [dependencies.crossterm]
 optional = true
