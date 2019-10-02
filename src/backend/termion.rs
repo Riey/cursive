@@ -48,7 +48,7 @@ impl Backend {
         // Should be enough for a single screen most of the time.
         let terminal =
             RefCell::new(AlternateScreen::from(MouseTerminal::from(
-                BufWriter::with_capacity(8_000_000, File::create("/dev/tty")?)
+                BufWriter::with_capacity(8_000_000, std::io::stdout())
                     .into_raw_mode()?,
             )));
 
