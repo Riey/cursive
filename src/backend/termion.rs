@@ -68,7 +68,8 @@ impl Backend {
         // We want nonblocking input, but termion is blocking by default
         // Read input from a separate thread
         thread::spawn(move || {
-            let input = std::fs::File::open("/dev/tty").unwrap();
+            //let input = std::fs::File::open("/dev/tty").unwrap();
+            let input = std::io::stdin();
             let mut events = input.events();
 
             // Take all the events we can
