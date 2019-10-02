@@ -22,7 +22,6 @@ use crate::theme;
 use crate::vec::Vec2;
 
 use std::cell::{Cell, RefCell};
-use std::fs::File;
 use std::io::{BufWriter, Write};
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::Arc;
@@ -31,7 +30,7 @@ use std::thread;
 /// Backend using termion
 pub struct Backend {
     terminal:
-        RefCell<AlternateScreen<MouseTerminal<RawTerminal<BufWriter<File>>>>>,
+        RefCell<AlternateScreen<MouseTerminal<RawTerminal<BufWriter<std::io::Stdout>>>>>,
     current_style: Cell<theme::ColorPair>,
 
     // Inner state required to parse input
