@@ -908,9 +908,11 @@ impl Cursive {
             self.refresh();
         }
 
-        if boring {
-            std::thread::sleep(Duration::from_millis(INPUT_POLL_DELAY_MS));
-            self.boring_frame_count += 1;
+        #[cfg(not(target_arch = "wasm32"))] {
+            if boring {
+                std::thread::sleep(Duration::from_millis(INPUT_POLL_DELAY_MS));
+                self.boring_frame_count += 1;
+            }
         }
 
         !boring
